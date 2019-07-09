@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="google_maps_key">AIzaSyAfQjPFa23CecrJPp6XL23wvXKI5HCjnw4</string>
+    <string name="search_hint">Type city...</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="action_search">Search...</string>
+    <string name="app_name">City Search</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="row_padding">16dp</dimen>
+    <dimen name="activity_margin">60dp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="text_size_15sp">15sp</dimen>
+</resources>
