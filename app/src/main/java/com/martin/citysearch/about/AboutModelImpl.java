@@ -6,6 +6,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,14 +50,9 @@ public class AboutModelImpl implements About.Model {
     private AboutInfo parseAboutInfo(String aboutInfoJson) {
         AboutInfo aboutInfo = null;
         try {
-            JSONObject jsonObject = new JSONObject(aboutInfoJson);
-            aboutInfo = new AboutInfo();
-            aboutInfo.setCompanyName(jsonObject.getString("companyName"));
-            aboutInfo.setCompanyAddress(jsonObject.getString("companyAddress"));
-            aboutInfo.setCompanyCity(jsonObject.getString("city"));
-            aboutInfo.setCompanyPostal(jsonObject.getString("postalCode"));
-            aboutInfo.setAboutInfo(jsonObject.getString("details"));
-        } catch (JSONException e) {
+
+            aboutInfo = new Gson().fromJson(aboutInfoJson, AboutInfo.class);
+        } catch (Exception e) {
             Log.e(TAG, e.getLocalizedMessage(), e);
         }
         return aboutInfo;
