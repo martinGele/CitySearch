@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.martin.citysearch.map.OpenMap;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,16 +17,16 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class CityModelImpl implements OpenMap.Model {
+public class CityModelImpl implements Main.Model {
 
     private static final String TAG = CityModelImpl.class.getSimpleName();
     private final WeakReference<Context> context;
-    private final OpenMap.Presenter presenter;
+    private final Main.Presenter presenter;
     private static final String FILE_NAME = "cities.json";
     private List<City> cities;
 
 
-    public CityModelImpl(@NonNull OpenMap.Presenter presenter, @NonNull Context context) {
+    public CityModelImpl(@NonNull Main.Presenter presenter, @NonNull Context context) {
         this.presenter = presenter;
         this.context = new WeakReference<>(context);
     }
@@ -57,6 +56,9 @@ public class CityModelImpl implements OpenMap.Model {
         Type collectionType = new TypeToken<List<City>>() {
         }.getType();
         cities = gson.fromJson(aboutInfoJson, collectionType);
+        /**
+         * this will make the sort by the alphabet it uses TimSort
+         */
         Collections.sort(cities, new Comparator<City>() {
             @Override
             public int compare(City city1, City city2) {
