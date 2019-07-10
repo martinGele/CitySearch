@@ -10,7 +10,7 @@ public class Coord {
     private Double lon;
     @SerializedName("lat")
     @Expose
-    private Integer lat;
+    private Double lat;
 
     public Double getLon() {
         return lon;
@@ -20,11 +20,11 @@ public class Coord {
         this.lon = lon;
     }
 
-    public Integer getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(Integer lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 

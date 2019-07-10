@@ -7,5 +7,10 @@ import java.util.List;
 
 public interface OpenMap {
 
+    interface View {
+        void showError();
+        void showProgress();
+        void hideProgress();
+    }
 
 }

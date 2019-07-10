@@ -21,7 +21,6 @@ public class MainPresenterImpl implements Main.Presenter {
 
     @Override
     public void getCityInfo() {
-
         Main.View aboutViewImpl = aboutView.get();
         aboutViewImpl.showProgress();
         new Handler().postDelayed(new Runnable() {
@@ -35,21 +34,15 @@ public class MainPresenterImpl implements Main.Presenter {
 
     @Override
     public void onSuccess(List<City> aboutInfo) {
-
         Main.View aboutViewImpl = aboutView.get();
-
         if (aboutViewImpl != null) {
             aboutViewImpl.hideProgress();
             aboutViewImpl.setCitList(aboutInfo);
-
         }
-
     }
 
     @Override
     public void onFail() {
-
-
         Main.View aboutViewImpl = aboutView.get();
         if (aboutViewImpl != null) {
             aboutViewImpl.hideProgress();
