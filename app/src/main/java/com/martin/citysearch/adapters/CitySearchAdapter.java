@@ -1,31 +1,19 @@
 package com.martin.citysearch.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.martin.citysearch.R;
+import com.martin.citysearch.holders.CityViewHolder;
 import com.martin.citysearch.main.City;
-import com.martin.citysearch.map.OpenMapActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,15 +34,15 @@ public class CitySearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cities_row, parent, false);
-        return new MyViewHolder(itemView);
+        return new CityViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder myViewHolder = (MyViewHolder) holder;
-        myViewHolder.update(context,cityListFiltered.get(position), this,mapFragment);
+        CityViewHolder cityViewHolder = (CityViewHolder) holder;
+        cityViewHolder.update(context, cityListFiltered.get(position), this, mapFragment);
     }
 
 
@@ -97,7 +85,6 @@ public class CitySearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             }
         };
     }
-
 
 
 }

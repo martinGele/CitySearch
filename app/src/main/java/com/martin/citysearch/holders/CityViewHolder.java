@@ -1,9 +1,10 @@
-package com.martin.citysearch.adapters;
+package com.martin.citysearch.holders;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,15 +20,16 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.martin.citysearch.R;
+import com.martin.citysearch.adapters.CitySearchAdapter;
 import com.martin.citysearch.main.City;
 import com.martin.citysearch.map.OpenMapActivity;
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
+public class CityViewHolder extends RecyclerView.ViewHolder {
     public TextView country, city, longitude, latitude;
     public LinearLayout linearLayoutCity;
 
 
-    public MyViewHolder(View view) {
+    public CityViewHolder(View view) {
         super(view);
         country = view.findViewById(R.id.country);
         city = view.findViewById(R.id.city);
@@ -43,6 +45,9 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         city.setText(cityModel.getName());
         longitude.setText("Lon: " + cityModel.getCoord().getLon());
         latitude.setText("Lat: " + cityModel.getCoord().getLat());
+
+        Log.d("GetLatLon", String.valueOf(cityModel.getCoord().getLon()));
+
         linearLayoutCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

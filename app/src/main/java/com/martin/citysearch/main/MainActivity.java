@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
@@ -28,9 +29,10 @@ public class MainActivity extends AppCompatActivity implements Main.View {
     private CitySearchAdapter mAdapter;
     private Button about;
     private SupportMapFragment mapFragment;
-    private ProgressBar progressBar;
+    private ProgressBar progresBarMain;
     private android.view.View errorView;
     private android.view.View infoContainer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +40,16 @@ public class MainActivity extends AppCompatActivity implements Main.View {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        progresBarMain = findViewById(R.id.progressBarMain);
+        recyclerView = findViewById(R.id.recycler_view_city);
         MainPresenterImpl mainPresenter = new MainPresenterImpl(this, this);
         mainPresenter.getCityInfo();
-        recyclerView = findViewById(R.id.recycler_view_city);
-        progressBar = findViewById(R.id.progressBar);
+
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
+
+
 
     }
 
@@ -65,16 +69,14 @@ public class MainActivity extends AppCompatActivity implements Main.View {
 
     @Override
     public void showProgress() {
-//        progressBar.setVisibility(android.view.View.VISIBLE);
-
+        progresBarMain.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-//        progressBar.setVisibility(android.view.View.GONE);
+        progresBarMain.setVisibility(View.GONE);
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -83,12 +85,9 @@ public class MainActivity extends AppCompatActivity implements Main.View {
         /***
          * Associate searchable configuration with the SearchView
          */
-
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        searchView = (SearchView) menu.findItem(R.id.action_search)
-                .getActionView();
-        searchView.setSearchableInfo(searchManager
-                .getSearchableInfo(getComponentName()));
+        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
         /**

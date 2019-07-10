@@ -21,6 +21,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/margin_10dp">
@@ -50,6 +51,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/margin_10dp">
