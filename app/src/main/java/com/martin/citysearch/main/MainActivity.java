@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements Main.View {
     private SupportMapFragment mapFragment;
     private ProgressBar progresBarMain;
     private android.view.View errorView;
-    private android.view.View infoContainer;
 
 
     @Override
@@ -43,7 +42,10 @@ public class MainActivity extends AppCompatActivity implements Main.View {
         setSupportActionBar(toolbar);
         progresBarMain = findViewById(R.id.progressBarMain);
         recyclerView = findViewById(R.id.recycler_view_city);
-        MainPresenterImpl mainPresenter = new MainPresenterImpl(this, this);
+        errorView = findViewById(R.id.errorView);
+        about = findViewById(R.id.buttonAbout);
+
+        final MainPresenterImpl mainPresenter = new MainPresenterImpl(this, this);
         mainPresenter.getCityInfo();
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
@@ -51,6 +53,14 @@ public class MainActivity extends AppCompatActivity implements Main.View {
         recyclerView.setLayoutManager(mLayoutManager);
 
 
+        if (returnOrientation()) {
+            about.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mainPresenter.openAboutActivity(MainActivity.this);
+                }
+            });
+        }
 
     }
 
@@ -64,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements Main.View {
 
     @Override
     public void showError() {
-        errorView.setVisibility(android.view.View.VISIBLE);
+        errorView.setVisibility(View.VISIBLE);
 
     }
 
@@ -92,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements Main.View {
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
 
-
         /**
          * listening to search query text change
          */
@@ -113,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements Main.View {
                  *  filter recycler view when text is changed, new view is represented on every change
                  */
                 mAdapter.getFilter().filter(query);
-               return true;
+                return true;
             }
         });
         return true;
@@ -134,10 +143,11 @@ public class MainActivity extends AppCompatActivity implements Main.View {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onConfigurationChanged(final Configuration newConfig)
-    {
-        // Ignore orientation change to keep activity from restarting
-        super.onConfigurationChanged(newConfig);
+
+    private boolean returnOrientation() {
+
+        return this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+
     }
+
 }

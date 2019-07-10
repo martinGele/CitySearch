@@ -1,9 +1,12 @@
 package com.martin.citysearch.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
+
+import com.martin.citysearch.about.AboutActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -48,5 +51,12 @@ public class MainPresenterImpl implements Main.Presenter {
             aboutViewImpl.hideProgress();
             aboutViewImpl.showError();
         }
+    }
+
+    @Override
+    public void openAboutActivity(Context context) {
+        Intent intent = new Intent(context, AboutActivity.class);
+        context.startActivity(intent);
+
     }
 }

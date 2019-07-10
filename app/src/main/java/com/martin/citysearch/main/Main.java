@@ -1,5 +1,7 @@
 package com.martin.citysearch.main;
 
+import android.content.Context;
+
 import java.util.List;
 
 public interface Main {
@@ -13,6 +15,8 @@ public interface Main {
         void getCityInfo();
         void onSuccess(List<City> aboutInfo);
         void onFail();
+        void openAboutActivity(Context context);
+
     }
 
 

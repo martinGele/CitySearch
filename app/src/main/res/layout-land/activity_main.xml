@@ -37,6 +37,16 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:visibility="gone" />
+            <TextView
+                android:id="@+id/errorView"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Loading Failed"
+                android:visibility="gone" />
+
+
 
         </RelativeLayout>
     </LinearLayout>

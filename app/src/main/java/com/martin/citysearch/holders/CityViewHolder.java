@@ -20,7 +20,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.martin.citysearch.R;
-import com.martin.citysearch.adapters.CitySearchAdapter;
 import com.martin.citysearch.main.City;
 import com.martin.citysearch.map.OpenMapActivity;
 
@@ -53,8 +52,7 @@ public class CityViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
 
 
-                if (context.getResources().getConfiguration().orientation ==
-                        Configuration.ORIENTATION_PORTRAIT) {
+                if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
 
                     Intent intent = new Intent(context, OpenMapActivity.class);
                     Bundle b = new Bundle();

@@ -1,9 +1,6 @@
 package com.martin.citysearch.map;
 
-import com.martin.citysearch.about.AboutInfo;
-import com.martin.citysearch.main.City;
-
-import java.util.List;
+import android.content.Context;
 
 public interface OpenMap {
 
@@ -11,6 +8,12 @@ public interface OpenMap {
         void showError();
         void showProgress();
         void hideProgress();
+    }
+
+    interface Presenter {
+        void openAboutActivity(Context context);
+
+
     }
 
 }

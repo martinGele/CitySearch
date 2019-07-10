@@ -2,6 +2,8 @@ package com.martin.citysearch.map;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,6 +22,7 @@ public class OpenMapActivity extends AppCompatActivity implements OnMapReadyCall
 
     private SupportMapFragment mapFragment;
     private double lon, lat;
+    private Button buttonAbout;
 
 
     @Override
@@ -30,10 +33,19 @@ public class OpenMapActivity extends AppCompatActivity implements OnMapReadyCall
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map_fragment_activity);
+        buttonAbout = findViewById(R.id.buttonAbout);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment_activity);
         mapFragment.getMapAsync(this);
+
+        final OpenMapPresenterImpl openMapPresenter = new OpenMapPresenterImpl(this);
+
+
+        buttonAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMapPresenter.openAboutActivity(OpenMapActivity.this);
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -41,8 +53,6 @@ public class OpenMapActivity extends AppCompatActivity implements OnMapReadyCall
             lat = extras.getDouble("lat");
         }
 
-        Log.d("GEtLat", String.valueOf(lat ));
-        Log.d("GEtLon", String.valueOf(lon ));
 
     }
 
@@ -60,8 +70,8 @@ public class OpenMapActivity extends AppCompatActivity implements OnMapReadyCall
         googleMap.animateCamera(zoom);
 
 
-
     }
+
 
     @Override
     public void showError() {
