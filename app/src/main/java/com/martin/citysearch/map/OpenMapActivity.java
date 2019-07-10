@@ -16,7 +16,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.martin.citysearch.R;
 
-public class OpenMapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class OpenMapActivity extends AppCompatActivity implements OnMapReadyCallback, OpenMap.View {
 
     private SupportMapFragment mapFragment;
     private double lon, lat;
@@ -32,7 +32,7 @@ public class OpenMapActivity extends AppCompatActivity implements OnMapReadyCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map_fragment);
+                .findFragmentById(R.id.map_fragment_activity);
         mapFragment.getMapAsync(this);
 
         Bundle extras = getIntent().getExtras();
@@ -52,13 +52,29 @@ public class OpenMapActivity extends AppCompatActivity implements OnMapReadyCall
         googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
         LatLng loc = new LatLng(lat, lon);
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(4);
         googleMap.addMarker(new MarkerOptions()
                 .position(loc)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
         googleMap.animateCamera(zoom);
 
+
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
 
     }
 }

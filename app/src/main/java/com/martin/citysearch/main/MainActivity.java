@@ -2,6 +2,7 @@ package com.martin.citysearch.main;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -90,19 +91,20 @@ public class MainActivity extends AppCompatActivity implements Main.View {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
+
+
         /**
          * listening to search query text change
          */
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 /**
                  * filter recycler view when query submitted, new view is represented on every change
                  */
-
                 mAdapter.getFilter().filter(query);
-                return false;
+                searchView.clearFocus();
+                return true;
             }
 
             @Override
@@ -111,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements Main.View {
                  *  filter recycler view when text is changed, new view is represented on every change
                  */
                 mAdapter.getFilter().filter(query);
-                return false;
+               return true;
             }
         });
         return true;
@@ -132,4 +134,10 @@ public class MainActivity extends AppCompatActivity implements Main.View {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onConfigurationChanged(final Configuration newConfig)
+    {
+        // Ignore orientation change to keep activity from restarting
+        super.onConfigurationChanged(newConfig);
+    }
 }

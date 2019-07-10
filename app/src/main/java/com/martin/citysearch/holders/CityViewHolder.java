@@ -40,7 +40,7 @@ public class CityViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void update(final Context context, final City cityModel, CitySearchAdapter citySearchAdapter, final SupportMapFragment mapFragment) {
+    public void update(final Context context, final City cityModel, final SupportMapFragment mapFragment) {
         country.setText(cityModel.getCountry());
         city.setText(cityModel.getName());
         longitude.setText("Lon: " + cityModel.getCoord().getLon());

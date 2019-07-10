@@ -42,7 +42,7 @@ public class CitySearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         CityViewHolder cityViewHolder = (CityViewHolder) holder;
-        cityViewHolder.update(context, cityListFiltered.get(position), this, mapFragment);
+        cityViewHolder.update(context, cityListFiltered.get(position),mapFragment);
     }
 
 

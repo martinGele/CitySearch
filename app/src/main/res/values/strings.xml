@@ -6,4 +6,5 @@
     <string name="country">Country</string>
     <string name="action_search">Search...</string>
     <string name="app_name">City Search</string>
+    <string name="about">about</string>
 </resources>

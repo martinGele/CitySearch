@@ -29,7 +29,10 @@
             android:value="@string/google_maps_key" />
 
 
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".main.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+
+            >
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />

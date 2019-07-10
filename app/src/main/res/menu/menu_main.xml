@@ -7,6 +7,7 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:orderInCategory="100"
         android:title="@string/action_search"
+        android:imeOptions="actionGo"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
 </menu>
