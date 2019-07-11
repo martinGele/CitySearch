@@ -30,7 +30,6 @@
 
 
         <activity android:name=".main.MainActivity"
-            android:configChanges="orientation|keyboardHidden"
 
             >
             <meta-data
