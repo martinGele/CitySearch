@@ -31,21 +31,19 @@ public class CityModelImpl implements Main.Model {
         this.context = new WeakReference<>(context);
     }
 
+
+
     @Override
     public void getCityInfo() {
-        String aboutInfoJson = getCityInfoFromAssets();
 
-        if (aboutInfoJson != null && !aboutInfoJson.isEmpty()) {
-            List<City> cityList = parseCityInfo(aboutInfoJson);
-            if (cityList != null) {
-                presenter.onSuccess(cityList);
-                return;
-            }
+        if (getCityInfoFromAssets() != null && !getCityInfoFromAssets().isEmpty()) {
+            presenter.onSuccess(parseCityInfo(getCityInfoFromAssets()));
+        }else{
+            presenter.onFail();
+
         }
-
-        presenter.onFail();
-
     }
+
 
     private List<City> parseCityInfo(String aboutInfoJson) {
         Gson gson = new Gson();

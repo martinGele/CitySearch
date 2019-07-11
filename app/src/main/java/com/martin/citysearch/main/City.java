@@ -18,6 +18,19 @@ public class City {
     @Expose
     private Coord coord;
 
+    public City(String country, String name, Integer id, Coord coord) {
+        this.country = country;
+        this.name = name;
+        this.id = id;
+        this.coord = coord;
+    }
+
+    public City(String country, String name, Integer id) {
+        this.country = country;
+        this.name = name;
+        this.id = id;
+    }
+
     public String getCountry() {
         return country;
     }

@@ -16,12 +16,18 @@ import com.martin.citysearch.holders.CityViewHolder;
 import com.martin.citysearch.main.City;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CitySearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
 
     private Context context;
+
+
+
     private List<City> cityList;
+
+
     private List<City> cityListFiltered;
     private SupportMapFragment mapFragment;
 
@@ -45,7 +51,9 @@ public class CitySearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         cityViewHolder.update(context, cityListFiltered.get(position),mapFragment);
     }
 
-
+    public List<City> getCityList() {
+        return cityList;
+    }
     @Override
     public int getItemCount() {
         return cityListFiltered.size();
@@ -85,6 +93,7 @@ public class CitySearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             }
         };
     }
+
 
 
 }

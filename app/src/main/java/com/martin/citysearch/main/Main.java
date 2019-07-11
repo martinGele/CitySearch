@@ -7,7 +7,7 @@ import java.util.List;
 public interface Main {
 
     interface Model {
-        void getCityInfo();
+       void getCityInfo();
     }
 
 
